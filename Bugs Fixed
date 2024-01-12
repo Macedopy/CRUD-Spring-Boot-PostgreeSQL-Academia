@@ -1,0 +1,83 @@
+ENGLISH
+  Errors in the application that have been resolved, perhaps you who came to look at this project may have the same errors
+  1° FATAL: password authentication failed for user "postgres"
+  This error happens when vs code with spring cannot authenticate to the database because there is a connection barrier in the (pg_hba.conf) -> file located in the postgree data folder on your computer
+  Solution: Navigate to the bottom of the file in .txt mode and change the location or IP settings to | trust |
+
+# TYPE  DATABASE        USER            ADDRESS                 METHOD
+
+# "local" is for Unix domain socket connections only
+local   all             all                                     trust <-----
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            trust <-----
+# IPv6 local connections:
+host    all             all             ::1/128                 trust <-----
+# Allow replication connections from localhost, by a user with the
+# replication privilege.
+local   replication     all                                     trust <-----
+host    replication     all             127.0.0.1/32            trust <-----
+host    replication     all             ::1/128                 trust <-----
+
+  Remove the arrows above, I only used them to highlight where the problem is
+
+2° **APPLICATION FAILED TO START**
+  
+  Description:
+  
+  Web server failed to start. Port 8090 was already in use.
+  
+  Action:
+  
+  Identify and stop the process that's listening on port 8090 or configure this application to listen on another port.
+  [22:25]
+
+Solution: Open the .properties file in your editor and configure:
+  
+  server.port= {Another number other than the error}
+
+
+
+
+
+
+
+PT-BR
+Erros na aplicação que foram solucionados, talvez você que veio olhar este projeto pode ter os mesmos erros
+
+1° FATAL: autentica??o do tipo password falhou para usu?rio "postgres "
+  Esse erro acontece quando o vs code junto ao spring não consegue autenticar ao banco de dados por haver uma barreira de conexão no (pg_hba.conf) -> arquivo localizado na pasta data do postgree em seu computador
+  Solução: Navegue até lá no fundo do arquivo em modo .txt e mude as configurações de local ou IP para | trust | 
+
+
+# TYPE  DATABASE        USER            ADDRESS                 METHOD
+
+# "local" is for Unix domain socket connections only
+local   all             all                                     trust <-----
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            trust <-----
+# IPv6 local connections:
+host    all             all             ::1/128                 trust <-----
+# Allow replication connections from localhost, by a user with the
+# replication privilege.
+local   replication     all                                     trust <-----
+host    replication     all             127.0.0.1/32            trust <-----
+host    replication     all             ::1/128                 trust <-----
+
+  Remova as setas acima, só utilizei-as para evidenciar onde está o problema
+
+2° **APPLICATION FAILED TO START**
+  
+  Description:
+  
+  Web server failed to start. Port 8090 was already in use.
+  
+  Action:
+  
+  Identify and stop the process that's listening on port 8090 or configure this application to listen on another port.
+  [22:25]
+
+
+  Solução: Abra o arquivo .properties em seu editor e configure:
+  
+  server.port= {Um outro número sem ser do erro}
+
